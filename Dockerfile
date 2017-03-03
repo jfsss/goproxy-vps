@@ -6,8 +6,8 @@ RUN \
     cd /opt/goproxy && \
     goproxy_vps_loc=$(curl -Lks https://github.com/phuslu/goproxy-ci/releases/ | grep -oE '/phuslu/goproxy-ci/.*/goproxy-vps_linux_amd64-r[0-9]+.tar.xz' | head -1) && \
     curl -L https://github.com${goproxy_vps_loc} | xz -d | tar xvf -
-    
-ENV GOPROXY_VPS_CONFIG_URL = https://pastebin.com/raw/2Les4t6J
+
+COPY goproxy-vps.user.toml /opt/goproxy/goproxy-vps.user.toml
 
 ADD entrypoint.sh /entrypoint.sh
 
